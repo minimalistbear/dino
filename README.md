@@ -76,8 +76,10 @@ As admin (you can switch those rolls using the button in the right upper side) y
 5.  Create a folder and within create an empty text file called asparagusSurvey.sol
 6.  Navigate to this folder with the Terminal
 7.  Start Remix within the folder & visit it
-    ```remix-ide
-    http://localhost:8080```
+    ```
+    remix-ide
+    http://localhost:8080
+    ```
 8.  Link the folder to to Remix:
     sixth button from the top left
 9.  Open asparagusSurvey.sol with Remix and paste code from the tutorial
