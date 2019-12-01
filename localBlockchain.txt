@@ -1,0 +1,24 @@
+1.  Install Ganache
+    https://truffleframework.com/docs/ganache/quickstart
+2.  Install Truffle
+    npm install -g truffle
+3.  Install Remix
+    npm install -g remix-ide
+
+4.  Open Ganache & Quickstart:
+    a local instance of a blockchain will now be reachable at http://localhost:7545
+5.  Create a folder and within create an empty text file called asparagusSurvey.sol
+6.  Navigate to this folder with the Terminal
+7.  Start Remix within the folder & visit it
+    remix-ide
+    http://localhost:8080
+
+8.  Link the folder to to Remix:
+    sixth button from the top left
+9.  Open asparagusSurvey.sol with Remix and paste code from the tutorial
+    one can find the file in the left-hand panel
+10. Compile with most current commit-compiler
+11. Swith to Run tab & select as Environment the "Web3 Provider":
+    enter address of Ganache blockchain: http://localhost:7545
+12. Deploy
+13. Build awesome shit with my best mate.

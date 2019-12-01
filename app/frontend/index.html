@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    
+    <script src="libs/jquery-3.3.1.slim.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+
+    <script src="libs/crypto-js/crypto-js.js"></script>
+    <script src="libs/web3-js/dist/web3.js"></script>
+
+    <script src="funcUser.js"></script>
+    <script src="funcCommon.js"></script>
+    <script src="hashing.js"></script>
+    
+
+    <title>DINO: Democratic Independent Nameless Organizer</title>
+  </head>
+  <body onload="connectWeb3()">
+    <div class="row text-center">
+      <div class="col-md-10"></div>
+      <div class="col-md-2">
+        <br>
+        <a href="admin.html" class="btn btn-light" role="button">Admin Page</a>
+      </div>
+    </div>
+
+    <h3 class="text-center">
+        <img src="logo.png" class="img-fluid" alt="Dino Logo" style="height: 30px">
+        <b>D</b>emocratic <b>I</b>ndependent <b>N</b>ameless <b>O</b>rganizer<br>
+        <small class="text-muted">User Page</small>
+    </h3>
+
+    <div class="container">
+      <div class="row">
+        <!--Connect Ethereum Wallet-->
+        <div class="col-md-6">
+          <h4 class="text-center">Connected Ethereum Wallet</h4>
+          <p align="center">(Wallet connects automatically)</p>
+          <form>
+
+            <!--Connect Ethereum Wallet: Wallet ID + Wallet Connected Badge-->
+            <div class="form-row text-center">
+              <div class="form-group col-md-12">
+                <code id="walletIDField"></code><br>
+                <span class="badge badge-pill badge-danger" id="walletConnectedBadge">Disconnected from Web3</span>
+              </div>
+            </div>
+
+            <!--Connect Ethereum Wallet: Connect Ethereum Wallet Button-->
+            <!-- <div class="form-row text-center">
+              <div class="form-group col-md-12">
+                <input class="btn btn-primary" type="button" onclick="connectWeb3()" value="Reconnect to Web3">
+              </div>
+            </div> -->
+          </form>
+        </div>
+
+        <!--Enter Personal Information-->
+        <div class="col-md-6">
+          <h4 class="text-center">Enter Personal Information</h4>
+          <form>
+
+            <!--Enter Personal Information: First Name + Last Name-->
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="firstNameField">First Name</label>
+                <input type="text" class="form-control" id="firstNameField" placeholder="Jean-Luc">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="lastNameField">Last Name</label>
+                <input type="text" class="form-control" id="lastNameField" placeholder="Picard">
+              </div>
+            </div>
+
+            <!--Enter Personal Information: Date of Birth-->
+            <label>Date of Birth</label>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <input type="text" class="form-control" id="yearOfBirthField" placeholder="2305">
+              </div>
+              <div class="form-group col-md-4">
+                <input type="text" class="form-control" id="monthOfBirthField" placeholder="12">
+              </div>
+              <div class="form-group col-md-4">
+                <input type="text" class="form-control" id="dayOfBirthField" placeholder="13">
+              </div>
+            </div>
+
+            <!--Enter Personal Information: Place of Birth-->
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="placeOfBirthField">Place of Birth</label>
+                <input type="text" class="form-control" id="placeOfBirthField" placeholder="La Barre">
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs nav-justified">
+      <li class="nav-item">
+        <a class="nav-link active" id="makeTab" data-toggle="tab" href="#make" role="tab" aria-controls="make" aria-selected="true">Make a new Appointment</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="queryTab" data-toggle="tab" href="#query" role="tab" aria-controls="query" aria-selected="false">Query your Appointment</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <!--Make a new Appointment-->
+      <div id="make" class="tab-pane fade show active">
+        <div class="form-row">
+          <!--Make a new Appointment [left column]-->
+          <div class="form-group col-md-6">
+
+            <!--Make a new Appointment: Select a Date-->
+            <div class="container">
+              <label>Select a Date</label>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <input type="text" class="form-control" id="dateYearField" placeholder="yyyy">
+                </div>
+                <div class="form-group col-md-4">
+                  <input type="text" class="form-control" id="dateMonthField" placeholder="mm">
+                </div>
+                <div class="form-group col-md-4">
+                  <input type="text" class="form-control" id="dateDayField" placeholder="dd">
+                </div>
+              </div>
+              <div class="form-group text-center col-md-12">
+                <input class="btn btn-primary" type="button" onclick="showTimeslots()" value="Show Timeslots" id="showTimeslotsButton">
+              </div>
+            </div>
+
+            <!--Make a new Appointment: Select a Time-->
+            <div id="makeAppointmentTimeContainer" class="container invisible">
+              <div class="form-group">
+                <label for="makeAppointmentTimeFormControl">Select a Time</label>
+                <select class="form-control" id="makeAppointmentTimeFormControl"></select>
+              </div>
+            </div>
+
+            <!--Make a new Appointment: Make Appointment-->
+            <div id="makeAppointmentContainer" class="container text-center invisible">
+              <div class="form-group col-md-12">
+                <input class="btn btn-primary" type="button" onclick="makeAppointment()" value="Make Appointment">
+              </div>
+            </div>
+          </div>
+
+          <!--Make a new Appointment [right column]-->
+          <div class="form-group col-md-6">
+            <div class="container">
+              <label>Console</label>
+              <div class="card card-body bg-light">
+                <samp id="consoleText"></samp>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Query your Appointment-->
+      <div id="query" class="tab-pane fade">
+        <br>
+        <div class="container text-center">
+          <input class="btn btn-primary" type="button" onclick="queryAppointment()" value="Query Appointment">
+        </div>
+        <div class="container text-center invisible" id="nextAppointmentContainer" >
+          <br>Next appointment of<br>
+          <h3 class="display-6" id="queriedPerson"></h3>
+          <code id="walletIDQueryField"></code>
+          <h1 class="display-4" id="nextAppointmentField"></h1>
+          
+        </div>
+      </div>
+    </div>
+
+    <br><br><br>
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">Niesamowite!</p>
+      <footer class="blockquote-footer">Marcin B.</footer>
+    </blockquote>
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">Tha seo gl&#233; mhath!</p>
+      <footer class="blockquote-footer">J&ouml;rn S.</footer>
+    </blockquote>
+  </body>
+</html>

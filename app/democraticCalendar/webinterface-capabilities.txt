@@ -1,0 +1,20 @@
+Webinterface Capabilities
+
+2-Tabbed Site:
+	Make Appointment
+	Query Appointment
+
+Make Appointment
+1. Connect my Wallet
+   (interface with MetaMask and display wallet ID, status: connected)
+2. Enter Personal Information
+   and create individual hash value
+3. Enter Date: Year, Month, Day
+   and display free & taken time slots
+4. Select Free Slot
+5. Make Appointment
+
+Query Appointment
+1. Connect my Wallet
+2. Enter Personal Information
+3. Show Appointment

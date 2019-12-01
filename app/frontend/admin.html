@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    
+    <script src="libs/jquery-3.3.1.slim.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+
+    <script src="libs/crypto-js/crypto-js.js"></script>
+    <script src="libs/web3-js/dist/web3.js"></script>
+
+    <script src="funcAdmin.js"></script>
+    <script src="funcCommon.js"></script>
+    <script src="hashing.js"></script>
+
+    <title>DINO - Admin Page</title>
+  </head>
+  <body onload="connectWeb3()">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <br>
+                <form>
+                    <!--Connect Ethereum Wallet: Wallet ID + Wallet Connected Badge-->
+                    <div class="form-row text-center">
+                        <div class="form-group col-md-12">
+                        <code id="walletIDField"></code><br>
+                        <!-- <input class="btn btn-primary" type="button" onclick="connectWeb3()" value="Connect to Web3"><br> -->
+                        <span class="badge badge-pill badge-danger" id="walletConnectedBadge">Disconnected from Web3</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <!-- <p align="left" style="vertical-align:middle"><code id="walletIDField"></code></p> -->
+            </div>
+            <div class="col-md-2">
+                <br>
+                <a href="index.html" class="btn btn-light" role="button">User Page</a>
+            </div>
+        </div>
+        
+        <h3 class="text-center">
+            <img src="logo.png" class="img-fluid" alt="Dino Logo" style="height: 30px">
+            <b>D</b>emocratic <b>I</b>ndependent <b>N</b>ameless <b>O</b>rganizer<br><br>
+            <small class="text-muted">Admin Page</small>
+        </h3>
+
+        <div class="container">
+            <label id="selectDateLabel">Select a Date</label>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="dateYearQueryField" placeholder="yyyy">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="dateMonthQueryField" placeholder="mm">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="dateDayQueryField" placeholder="dd">
+                </div>
+            </div>
+            <div class="form-group text-center col-md-12">
+                <input class="btn btn-primary" type="button" onclick="showAppointments()" id="showAdminAppointments" value="Show Appointments">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <!--Bootstrap Collapsible Accordion-->
+                <div id="accordion">
+                <!-- ### in below example on array position 0 ###
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h5 class="mb-0">
+                                <button class="btn" data-toggle="collapse" data-target="#form0">0800h</button>
+                            </h5>
+                        </div>
+                    </div>
+                    <div id="form0" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="firstNameField">First Name</label>
+                                        <input type="text" class="form-control" id="firstNameField0">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="lastNameField">Last Name</label>
+                                        <input type="text" class="form-control" id="lastNameField0">
+                                    </div>
+                                </div>
+                                <label>Date of Birth</label>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <input type="text" class="form-control" id="yearOfBirthField0">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" class="form-control" id="monthOfBirthField0">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" class="form-control" id="dayOfBirthField0">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="placeOfBirthField">Place of Birth</label>
+                                        <input type="text" class="form-control" id="placeOfBirthField0">
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="form-row text-center">
+                                <div class="form-group col-md-6">
+                                    <input class="btn btn-primary" id="verifyButton0" type="button" onclick="verifyAppointment(0)" value="Verify User">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input class="btn btn-primary" type="button" onclick="deleteAppointment(0)" value="Delete Appointment">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+  </body>

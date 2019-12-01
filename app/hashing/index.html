@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>stellarblockchain-hashing</title>
+  </head>
+  <body>
+      <script src="libs/crypto-js/crypto-js.js"></script>
+      <script src="func.js"></script>
+
+      <h2>Personal Information</h2>
+
+      <table>
+        <tr>
+          <td>First Name:</td>
+          <td><input type="text" id="firstNameField" value="" placeholder="Jean-Luc"></td>
+        </tr>
+        <tr>
+          <td>Last Name:</td>
+          <td><input type="text" id="lastNameField" value="" placeholder="Picard"></td>
+        </tr>
+        <tr>
+          <td>Date of Birth:</td>
+          <td><input type="text" id="yearOfBirthField" value="" placeholder="2305" size="5"> -
+            <input type="text" id="monthOfBirthField" value="" placeholder="07" size="3"> -
+            <input type="text" id="dayOfBirthField" value="" placeholder="13" size="3"></td>  
+        </tr>
+        <tr>
+          <td>Place of Birth:</td>
+          <td><input type="text" id="placeOfBirthField" value="" placeholder="La Barre"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" id="createWalletIDButton" onclick="checkForm()" value="Create Wallet ID"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><code id="walletIDField">0x...</code></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a id="downloadWalletIDLink"><input type="submit" id="downloadWalletIDButton" disabled="true" value="Download Wallet ID"></a></td>
+          </tr>
+      </table>
+
+      <br><input type="submit" id="createWalletButton" onclick="createWallet()" disabled="true" value="Create Wallet"><br>
+      <code>
+        The button above will create a wallet <br>
+        (i.e. account) in the locally running <br>
+        Ganache Blockchain at 127.0.0.1:7545.
+      </code>
+  </body>
+</html>
